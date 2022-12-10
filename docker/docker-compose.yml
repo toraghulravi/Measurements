@@ -1,0 +1,9 @@
+version: "3.2"
+
+services:
+  python:
+    build:
+      context: ./console
+    volumes:
+      - ../config.py:/work/src/config.py:rw
+      - ../src:/work/src:rw
