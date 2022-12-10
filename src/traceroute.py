@@ -5,29 +5,27 @@ import time
 from config import Config
 
 class TraceRoute:
-    def __init__(self, TTL=1, MAX=30) -> None:
+    def __init__(self, TTL: int = 1, MAX: int = 30) -> None:
         self.TTL = TTL
         self.MAX = MAX
     
-    def _icmp_bind(self):
+    def _icmp_bind(self) -> socket:
         icmp = socket.socket(socket.AF_INET,socket.SOCK_RAW, socket.IPPROTO_ICMP)
         icmp.bind(("", 33434))
         return icmp
     
-    def get_icmp_socket(self):
-        icmp = self._icmp_bind()
-        return icmp
+    def get_icmp_socket(self) -> socket:
+        return self._icmp_bind()
     
-    def _udp_bind(self):
+    def _udp_bind(self) -> socket:
         udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         udp.setsockopt(0, 4, self.TTL)
         return udp
     
-    def get_udp_socket(self):
-        udp = self._udp_bind()
-        return udp
+    def get_udp_socket(self) -> socket:
+        return self._udp_bind()
     
-    def get_traceroute(self, hostname: str = Config.HOSTNAME):
+    def get_traceroute(self, hostname: str = Config.HOSTNAME) -> None:
         while True:
             start_time = time.time() * 1000
             icmp = self.get_icmp_socket()
@@ -52,5 +50,5 @@ class TraceRoute:
             if router_addr[0] == hostname or self.TTL == self.MAX:
                 break
     
-    def run_measurement(self):
+    def run_measurement(self) -> None:
         self.get_traceroute()
