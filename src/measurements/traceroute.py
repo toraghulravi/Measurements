@@ -19,9 +19,9 @@ class TraceRoute(Measurement):
         if Utils.is_hostname(target):
             result = []
             if params["af"] == 4:
-                result = dns.resolver.query(target, "A")
+                result = dns.resolver.resolve(target, "A")
             elif params["af"] == 6:
-                result = dns.resolver.query(target, "AAAA")
+                result = dns.resolver.resolve(target, "AAAA")
             else:
                 raise Exception("Unable to resolve hostname!!!")
 
@@ -29,7 +29,8 @@ class TraceRoute(Measurement):
             raise Exception("No resolved IP addresses")
 
         ip_addr = result[0].to_text()
-        result = Utils.run(["sudo", "scamper", "-i", ip_addr], timeout=60)
+        cmd = " ".join(["trace", "-M", "-w", str(params["response_timeout"] // 1000), "-P", params["protocol"], "-f", str(params["first_hop"]), "-m", str(params["max_hops"])])
+        result = Utils.run(["sudo", "scamper", "-c", cmd, "-i", ip_addr], timeout=60)
 
 
 if __name__ == "__main__":
