@@ -5,5 +5,4 @@ services:
     build:
       context: ./console
     volumes:
-      - ../config.py:/work/src/config.py:rw
-      - ../src:/work/src:rw
+      - ../src:/work/src:ro

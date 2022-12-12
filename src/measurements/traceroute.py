@@ -1,5 +1,4 @@
 import dns.resolver
-from typing import Optional
 
 from src.measurement import Measurement
 from src.config import Config
@@ -30,4 +29,4 @@ class TraceRoute(Measurement):
 
         ip_addr = result[0].to_text()
         cmd = " ".join(["trace", "-M", "-w", str(params["response_timeout"] // 1000), "-P", params["protocol"], "-f", str(params["first_hop"]), "-m", str(params["max_hops"])])
-        result = Utils.run(["sudo", "scamper", "-c", cmd, "-i", ip_addr], timeout=60)
+        result = Utils.run(["scamper", "-c", cmd, "-i", ip_addr], timeout=60)

@@ -18,6 +18,7 @@ usage() {
   PROG=`basename $0`
   echo "$PROG [<options>]"
   echo "    console - Build and connect to python"
+  echo "    run - Build and run the measurements"
 }
 
 COMPOSE="docker-compose -f docker-compose.yml $COMPOSE_ARGS"
@@ -78,8 +79,14 @@ docker_python_stop()
 }
 
 
+docker_python_run() {
+    cd docker
+    _docker_console python bash /work/runner.sh
+    docker-compose down
+}
+
 case "x$ACTION" in
-    xconsole|xstop)
+    xconsole|xstop|xrun)
         docker_python_${ACTION} ${PARAMS[@]}
         ;;
     *) usage
