@@ -1,13 +1,13 @@
 
-from traceroute import TraceRoute
-from config import Config
+from src.config import Config
+from src.measurements.traceroute import TraceRoute
 
 FUNCTIONS = {
     "traceroute": TraceRoute()
 }
 
 if __name__ == "__main__":
-    functions = Config.FUNCTIONS.split(",")
+    functions = Config.MEASUREMENTS.split(",")
     for function in functions:
         if function == "all":
             for f in FUNCTIONS:

@@ -6,8 +6,8 @@ from src.config import Config
 from src.utils import Utils
 
 class TraceRoute(Measurement):
-    def __init__(self, name: Optional[str] = None) -> None:
-        super().__init__(name)
+    def __init__(self) -> None:
+        super().__init__(name="traceroute")
 
     def run_measurement(self):
         params = Config.TRACEROUTE_PARAMS
@@ -31,8 +31,3 @@ class TraceRoute(Measurement):
         ip_addr = result[0].to_text()
         cmd = " ".join(["trace", "-M", "-w", str(params["response_timeout"] // 1000), "-P", params["protocol"], "-f", str(params["first_hop"]), "-m", str(params["max_hops"])])
         result = Utils.run(["sudo", "scamper", "-c", cmd, "-i", ip_addr], timeout=60)
-
-
-if __name__ == "__main__":
-    a = TraceRoute(name="temp")
-    a.run_measurement()
