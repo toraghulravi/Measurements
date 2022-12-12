@@ -1,3 +1,4 @@
+import socket
 import subprocess
 
 class Utils:
@@ -15,7 +16,19 @@ class Utils:
     
         out, _ = proc.communicate()
         return out.decode("utf-8")
-    
+
     @staticmethod
     def run(commands, timeout=20, stderr=subprocess.STDOUT, shell=False):
         return subprocess.run(commands, timeout=timeout, stderr=stderr, shell=shell)
+
+    @staticmethod
+    def cleanup(target):
+        return target.strip().lower()
+
+    @staticmethod
+    def is_hostname(target):
+        try:
+            socket.inet_aton(target)
+            return False
+        except:
+            return True
