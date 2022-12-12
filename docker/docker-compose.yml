@@ -6,3 +6,4 @@ services:
       context: ./console
     volumes:
       - ../src:/work/src:ro
+    network_mode: "host"
