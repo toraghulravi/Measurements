@@ -8,7 +8,7 @@ class Config:
         "target": "google.com", 
         "af": 4,
         "response_timeout": 4000,
-        "protocol": "UDP",
+        "protocol": "ICMP",
         "resolve_on_probe": "false", # we don't have this right now!
         "packets": 3,
         "size": 48, # not so important, Size of the packet
