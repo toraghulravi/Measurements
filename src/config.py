@@ -7,8 +7,8 @@ class Config:
     TRACEROUTE_PARAMS: dict = {
         "target": "google.com", 
         "af": 4,
-        "response_timeout": 4000,
-        "protocol": "ICMP",
+        "response_timeout": 8000,
+        "protocol": "TCP",
         "resolve_on_probe": "false", # we don't have this right now!
         "packets": 3,
         "size": 48, # not so important, Size of the packet

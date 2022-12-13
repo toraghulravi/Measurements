@@ -29,4 +29,4 @@ class TraceRoute(Measurement):
 
         ip_addr = result[0].to_text()
         cmd = " ".join(["trace", "-w", str(params["response_timeout"] // 1000), "-P", params["protocol"], "-f", str(params["first_hop"]), "-m", str(params["max_hops"])])
-        result = Utils.run(["scamper", "-c", cmd, "-i", ip_addr], timeout=60)
+        result = Utils.run(["scamper", "-c", cmd, "-i", ip_addr], timeout=120)

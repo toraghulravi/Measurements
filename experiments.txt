@@ -1,0 +1,122 @@
+Experiment 1
+
+Configuration:
+TRACEROUTE_PARAMS: dict = {
+    "target": "google.com", 
+    "af": 4,
+    "response_timeout": 4000,
+    "protocol": "ICMP",
+    "resolve_on_probe": "false", # we don't have this right now!
+    "packets": 3,
+    "size": 48, # not so important, Size of the packet
+    "first_hop": 1, # Start measuring the traceroute at this hop.
+    "max_hops": 32, # Stop measuring the traceroute at this hop.
+    "paris": 16, # Number of different variations for paris traceroute. Set 0 for standard traceroute.
+    "dont_fragment": True
+}
+
+Result:
+traceroute from 172.24.0.2 to 172.217.0.174
+ 1  172.24.0.1  0.107 ms
+ 2  10.0.0.1  5.854 ms
+ 3  96.120.27.157  17.213 ms
+ 4  69.139.233.85  13.389 ms
+ 5  68.87.230.42  12.654 ms
+ 6  162.151.36.241  15.334 ms
+ 7  96.110.40.57  19.463 ms
+ 8  96.110.32.94  14.887 ms
+ 9  66.208.233.90  18.203 ms
+10  209.85.142.117  17.116 ms
+11  142.251.231.67  14.894 ms
+12  172.217.0.174  15.335 ms
+
+-------------------------------------------------------------------------------------------
+
+Experiment 2
+
+Configuration:
+TRACEROUTE_PARAMS: dict = {
+    "target": "google.com", 
+    "af": 4,
+    "response_timeout": 4000,
+    "protocol": "TCP",
+    "resolve_on_probe": "false", # we don't have this right now!
+    "packets": 3,
+    "size": 48, # not so important, Size of the packet
+    "first_hop": 1, # Start measuring the traceroute at this hop.
+    "max_hops": 32, # Stop measuring the traceroute at this hop.
+    "paris": 16, # Number of different variations for paris traceroute. Set 0 for standard traceroute.
+    "dont_fragment": True
+}
+
+===Executing all measurements===
+traceroute from 172.19.0.2 to 172.217.0.174
+ 1  172.19.0.1  0.166 ms
+ 2  *
+ 3  *
+ 4  *
+ 5  *
+ 6  *
+
+-------------------------------------------------------------------------------------------
+
+Experiment 3
+
+Configuration:
+TRACEROUTE_PARAMS: dict = {
+    "target": "google.com", 
+    "af": 4,
+    "response_timeout": 4000,
+    "protocol": "ICMP",
+    "resolve_on_probe": "false", # we don't have this right now!
+    "packets": 3,
+    "size": 48, # not so important, Size of the packet
+    "first_hop": 1, # Start measuring the traceroute at this hop.
+    "max_hops": 32, # Stop measuring the traceroute at this hop.
+    "paris": 16, # Number of different variations for paris traceroute. Set 0 for standard traceroute.
+    "dont_fragment": True
+}
+
+traceroute from 172.21.0.2 to 172.217.0.174
+ 1  172.21.0.1  0.067 ms
+ 2  10.0.0.1  8.197 ms
+ 3  96.120.27.157  15.784 ms
+ 4  69.139.233.85  15.440 ms
+ 5  68.87.230.42  16.202 ms
+ 6  162.151.36.241  17.716 ms
+ 7  96.110.40.57  24.307 ms
+ 8  96.110.32.94  14.764 ms
+ 9  66.208.233.90  17.352 ms
+10  209.85.142.117  15.938 ms
+11  142.251.231.67  20.048 ms
+12  172.217.0.174  16.597 ms
+
+-------------------------------------------------------------------------------------------
+
+Experiment 4
+
+Configuration:
+TRACEROUTE_PARAMS: dict = {
+    "target": "google.com", 
+    "af": 4,
+    "response_timeout": 8000,
+    "protocol": "TCP",
+    "resolve_on_probe": "false", # we don't have this right now!
+    "packets": 3,
+    "size": 48, # not so important, Size of the packet
+    "first_hop": 1, # Start measuring the traceroute at this hop.
+    "max_hops": 32, # Stop measuring the traceroute at this hop.
+    "paris": 16, # Number of different variations for paris traceroute. Set 0 for standard traceroute.
+    "dont_fragment": True
+}
+
+===Executing all measurements===
+traceroute from 172.22.0.2 to 142.250.191.238
+ 1  172.22.0.1  0.138 ms
+ 2  *
+ 3  *
+ 4  *
+ 5  *
+ 6  142.250.191.238  2624.097 ms [closed]
+
+-------------------------------------------------------------------------------------------
