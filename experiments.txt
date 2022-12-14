@@ -120,3 +120,22 @@ traceroute from 172.22.0.2 to 142.250.191.238
  6  142.250.191.238  2624.097 ms [closed]
 
 -------------------------------------------------------------------------------------------
+
+Experiment 5
+
+Configuration:
+PING_PARAMS: dict = {
+        "target": "google.com",
+        "af": 4,
+        "packet_interval": 10,
+        "resolve_on_probe": "false", # we don't have this right now!
+        "packets": 3,
+        "size": 48, # not so important, Size of the packet
+    }
+
+ping 192.168.65.3 to 74.125.195.101: 48 byte packets
+48 bytes from 74.125.195.101, seq=1 ttl=38 time=53.312 ms
+48 bytes from 74.125.195.101, seq=2 ttl=38 time=44.746 ms
+--- 74.125.195.101 ping statistics ---
+3 packets transmitted, 2 packets received, 33% packet loss
+round-trip min/avg/max/stddev = 44.746/49.029/53.312/4.283 ms
