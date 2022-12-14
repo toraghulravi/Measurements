@@ -1,13 +1,13 @@
 class Config:
     # Functionalities - comma separated
     # Possible functions: traceroute
-    MEASUREMENTS: str = "ping"
+    MEASUREMENTS: str = "all"
 
     # Traceroute Parameters
     TRACEROUTE_PARAMS: dict = {
         "target": "google.com", 
         "af": 4,
-        "response_timeout": 8000,
+        "response_timeout": 10000,
         "protocol": "UDP",
         "resolve_on_probe": "false", # we don't have this right now!
         "packets": 3,
