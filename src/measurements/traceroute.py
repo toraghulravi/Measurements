@@ -1,5 +1,3 @@
-import dns.resolver
-
 from src.measurement import Measurement
 from src.config import Config
 from src.utils import Utils
@@ -15,18 +13,6 @@ class TraceRoute(Measurement):
         if target == "":
             raise Exception("Invalid HostName!!")
 
-        if Utils.is_hostname(target):
-            result = []
-            if params["af"] == 4:
-                result = dns.resolver.resolve(target, "A")
-            elif params["af"] == 6:
-                result = dns.resolver.resolve(target, "AAAA")
-            else:
-                raise Exception("Unable to resolve hostname!!!")
-
-        if not result:
-            raise Exception("No resolved IP addresses")
-
-        ip_addr = result[0].to_text()
+        ip_addr = Utils.get_ip_address(target=target, af=params["af"])
         cmd = " ".join(["trace", "-w", str(params["response_timeout"] // 1000), "-P", params["protocol"], "-f", str(params["first_hop"]), "-m", str(params["max_hops"])])
-        result = Utils.run(["scamper", "-c", cmd, "-i", ip_addr], timeout=120)
+        Utils.run(["scamper", "-c", cmd, "-i", ip_addr], timeout=120)

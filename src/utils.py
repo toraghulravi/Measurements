@@ -1,3 +1,5 @@
+import dns.resolver
+
 import socket
 import subprocess
 
@@ -32,3 +34,20 @@ class Utils:
             return False
         except:
             return True
+
+    @staticmethod
+    def get_ip_address(target, af):
+        if Utils.is_hostname(target):
+            result = []
+            if af == 4:
+                result = dns.resolver.resolve(target, "A")
+            elif af == 6:
+                result = dns.resolver.resolve(target, "AAAA")
+            else:
+                raise Exception("Unable to resolve hostname!!!")
+
+        if not result:
+            raise Exception("No resolved IP addresses")
+
+        ip_addr = result[0].to_text()
+        return ip_addr
