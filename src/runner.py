@@ -2,10 +2,12 @@
 from config import Config
 from measurements.traceroute import TraceRoute
 from measurements.ping import Ping
+from measurements.dns import DNS
 
 FUNCTIONS = {
     "traceroute": TraceRoute(),
-    "ping": Ping()
+    "ping": Ping(),
+    "dns":  DNS()
 }
 
 if __name__ == "__main__":

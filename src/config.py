@@ -1,7 +1,7 @@
 class Config:
     # Functionalities - comma separated
     # Possible functions: traceroute
-    MEASUREMENTS: str = "all"
+    MEASUREMENTS: str = "dns"
 
     # Traceroute Parameters
     TRACEROUTE_PARAMS: dict = {
@@ -26,4 +26,27 @@ class Config:
         "resolve_on_probe": "false", # we don't have this right now!
         "packets": 3,
         "size": 48, # not so important, Size of the packet
+    }
+
+    # DNS Parameters
+    DNS_PARAMS: dict = {
+        "target": "google.com",
+        "af": 4,
+        "query_class": "IN",
+        "query_type": "A",
+        "use_macros": False, # we don't have this right now!
+        "use_probe_resolver": False, # we don't have this right now!
+        "resolve_on_probe": False, # we don't have this right now!
+        "set_nsid_bit": False,
+        "protocol": "UDP",
+        "payload_size": 512,
+        "retry": 0,
+        "skip_dns_check": False, # we don't have this right now!
+        "include_qbuf": False, # we don't have this right now!
+        "include_abuf": False, # we don't have this right now!
+        "prepend_probe_id": False, # we don't have this now
+        "set_rd_bit": True,
+        "set_do_bit": True,
+        "set_cd_bit": True,
+        "timeout": 5000
     }

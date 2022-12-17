@@ -4,6 +4,8 @@ RUN apt-get -y update && apt-get -y upgrade
 
 RUN apt-get -y install scamper
 
+RUN apt-get -y install dnsutils
+
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt

@@ -139,3 +139,54 @@ ping 192.168.65.3 to 74.125.195.101: 48 byte packets
 --- 74.125.195.101 ping statistics ---
 3 packets transmitted, 2 packets received, 33% packet loss
 round-trip min/avg/max/stddev = 44.746/49.029/53.312/4.283 ms
+
+-------------------------------------------------------------------------------------------
+
+Experiment 6
+
+Configuration:
+DNS_PARAMS: dict = {
+        "target": "google.com",
+        "af": 4,
+        "query_class": "IN",
+        "query_type": "A",
+        "use_macros": False, # we don't have this right now!
+        "use_probe_resolver": False, # we don't have this right now!
+        "resolve_on_probe": False, # we don't have this right now!
+        "set_nsid_bit": False,
+        "protocol": "UDP",
+        "payload_size": 512,
+        "retry": 0,
+        "skip_dns_check": False, # we don't have this right now!
+        "include_qbuf": False, # we don't have this right now!
+        "include_abuf": False, # we don't have this right now!
+        "prepend_probe_id": False, # we don't have this now
+        "set_rd_bit": True,
+        "set_do_bit": True,
+        "set_cd_bit": True,
+        "timeout": 5000
+    }
+
+*** Executing dns *****
+
+; <<>> DiG 9.10.3-P4-Debian <<>> google.com -c IN -t A -4 +retry=0 +time=5000 +nsid
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54235
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; NSID
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		197	IN	A	142.250.176.14
+
+;; Query time: 1 msec
+;; SERVER: 192.168.65.5#53(192.168.65.5)
+;; WHEN: Fri Dec 16 23:59:37 UTC 2022
+;; MSG SIZE  rcvd: 69
+
+-------------------------------------------------------------------------------------------
