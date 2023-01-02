@@ -3,11 +3,13 @@ from config import Config
 from measurements.traceroute import TraceRoute
 from measurements.ping import Ping
 from measurements.dns import DNS
+from measurements.http import HTTP
 
 FUNCTIONS = {
     "traceroute": TraceRoute(),
     "ping": Ping(),
-    "dns":  DNS()
+    "dns":  DNS(),
+    "http": HTTP()
 }
 
 if __name__ == "__main__":

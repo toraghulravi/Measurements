@@ -44,9 +44,26 @@ class Config:
         "skip_dns_check": False, # we don't have this right now!
         "include_qbuf": False, # we don't have this right now!
         "include_abuf": False, # we don't have this right now!
-        "prepend_probe_id": False, # we don't have this now
+        "prepend_probe_id": False, # we don't have this now!
         "set_rd_bit": True,
         "set_do_bit": True,
         "set_cd_bit": True,
         "timeout": 5000
+    }
+
+    # HTTP Paramaters
+    HTTP_PARAMS: dict = {
+        "target": "google.com",
+        "af": 4,
+        "path": "/",
+        "resolve_on_probe": False, # we don't have this right now!
+        "header_bytes": 0, # Add payload if needed. IGNORING FOR NOW!
+        "method": "GET",
+        "extended_timing": False,
+        "port": 80,
+        "version": "1.1",
+        "more_extended_timing": False,
+        "skip_dns_check": False,
+        "query_string": {},
+        "user_agent": None
     }
