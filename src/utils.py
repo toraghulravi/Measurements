@@ -53,6 +53,6 @@ class Utils:
         return ip_addr
 
     @staticmethod
-    def create_request_string(scheme: str, host: str, path: str, port: int) -> str:
-        url = f"{scheme}://{host}:{str(port)}{path}"
+    def create_request_string(host: str, path: str, port: int) -> str:
+        url = f"http://{host}:{str(port)}{path}"
         return url

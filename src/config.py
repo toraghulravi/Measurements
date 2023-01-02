@@ -1,7 +1,7 @@
 class Config:
     # Functionalities - comma separated
     # Possible functions: traceroute
-    MEASUREMENTS: str = "dns"
+    MEASUREMENTS: str = "http"
 
     # Traceroute Parameters
     TRACEROUTE_PARAMS: dict = {

@@ -12,14 +12,14 @@ class HTTP(Measurement):
         # If needs to resolve for IP addresses use
         # https://stackoverflow.com/questions/29995133/python-requests-use-navigate-site-by-servers-ip
 
-        params = Config.TRACEROUTE_PARAMS
+        params = Config.HTTP_PARAMS
         target = Utils.cleanup(params["target"])
         headers = requests.utils.default_headers()
 
-        if not (target and params["scheme"] and params["path"] and params["port"]):
+        if not (target and params["target"] and params["port"]):
             raise Exception("Invalid URL Parameters!!")
 
-        request_str = Utils.create_request_string(params["scheme"], params["host"], params["path"], params["port"])
+        request_str = Utils.create_request_string(target, params["path"], params["port"])
         if params["user_agent"]:
             headers.update({"User-Agent": params["user_agent"]})
 
