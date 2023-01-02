@@ -82,7 +82,6 @@ docker_python_stop()
 docker_python_run() {
     cd docker
     _docker_console python bash /work/runner.sh
-    docker-compose down --remove-orphans
 }
 
 case "x$ACTION" in
